@@ -2,7 +2,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import YoutubeCarousel from "@/components/sections/YoutubeCarousel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Database, Code2, GitBranch, ArrowRight, Sparkles } from "lucide-react";
+import { Database, Code2, GitBranch, ArrowRight, Sparkles, Container, Terminal } from "lucide-react";
 import Link from "next/link";
 import { SelfPromoCard } from "@/components/ads/AdBanner";
 
@@ -24,12 +24,28 @@ const playgrounds = [
     gradient: "from-yellow-500 to-orange-500",
   },
   {
+    title: "Python Playground",
+    description:
+      "Ejecuta código Python en el navegador con Pyodide. Ideal para data science y automatización.",
+    icon: Terminal,
+    href: "/playground/python",
+    gradient: "from-green-500 to-emerald-500",
+  },
+  {
     title: "Git Simulator",
     description:
       "Practica comandos de Git en un entorno seguro. Visualiza commits y ramas en tiempo real.",
     icon: GitBranch,
     href: "/playground/git",
     gradient: "from-orange-500 to-red-500",
+  },
+  {
+    title: "Docker Simulator",
+    description:
+      "Aprende Docker de forma interactiva. Practica run, ps, stop, build y más comandos.",
+    icon: Container,
+    href: "/playground/docker",
+    gradient: "from-cyan-500 to-blue-500",
   },
 ];
 
@@ -92,7 +108,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {playgrounds.map((pg) => (
               <Card key={pg.title} className="group card-hover overflow-hidden">
                 <div className={`absolute inset-0 bg-gradient-to-r ${pg.gradient} opacity-0 group-hover:opacity-5 transition-opacity`} />

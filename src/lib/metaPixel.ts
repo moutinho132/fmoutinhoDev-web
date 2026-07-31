@@ -13,6 +13,6 @@ export const trackDownloadCV = () => {
   trackEvent("Download_CV", { content_name: "Fernando_Moutinho_CV" });
 };
 
-export const trackStartPlayground = (playgroundType: "sql" | "js" | "git") => {
+export const trackStartPlayground = (playgroundType: "sql" | "js" | "git" | "python" | "docker") => {
   trackEvent("Start_Playground", { content_name: `playground_${playgroundType}` });
 };
