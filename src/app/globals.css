@@ -145,6 +145,15 @@
     scroll-behavior: smooth;
   }
 
+  /* Center site with max-width */
+  body {
+    @apply flex justify-center;
+  }
+
+  body > div {
+    @apply w-full max-w-[1440px];
+  }
+
   /* Code font */
   code, pre, .font-mono {
     font-family: 'JetBrains Mono', ui-monospace, monospace;
