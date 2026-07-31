@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Database, Code2, GitBranch, ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
-import AdBanner from "@/components/ads/AdBanner";
+import { SelfPromoCard } from "@/components/ads/AdBanner";
 
 const playgrounds = [
   {
@@ -115,9 +115,14 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Ad Banner */}
+          {/* Promoción */}
           <div className="mt-12">
-            <AdBanner slot="home-middle" format="horizontal" />
+            <SelfPromoCard
+              title="¿Primera vez aquí?"
+              description="Prueba los playgrounds interactivos de SQL, JavaScript y Git. Aprende practicando sin configurar nada."
+              href="/playground/sql"
+              cta="Explorar playgrounds"
+            />
           </div>
         </div>
       </section>

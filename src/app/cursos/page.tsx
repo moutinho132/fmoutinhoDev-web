@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, Clock, Users, DollarSign, ExternalLink } from "lucide-react";
-import AdBanner from "@/components/ads/AdBanner";
+import AdBanner, { SelfPromoCard } from "@/components/ads/AdBanner";
 
 export const metadata = {
   title: "Cursos | fmoutinhoDev",
@@ -128,27 +128,13 @@ export default function CursosPage() {
           ))}
         </div>
 
-        {/* Ad Banner */}
-        <AdBanner slot="cursos-bottom" format="horizontal" />
-
-        {/* CTA */}
-        <div className="bg-muted rounded-lg p-8 text-center space-y-4">
-          <h2 className="text-2xl font-bold">¿Prefieres contenido gratuito?</h2>
-          <p className="text-muted-foreground">
-            Visita mi canal de YouTube para tutoriales y guías gratuitas.
-          </p>
-          <Button size="lg" asChild>
-            <a
-              href="https://youtube.com/@fmoutinhodev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="gap-2"
-            >
-              <ExternalLink className="h-4 w-4" />
-              Ir a YouTube
-            </a>
-          </Button>
-        </div>
+        {/* Promoción YouTube */}
+        <SelfPromoCard
+          title="¿Prefieres contenido gratuito?"
+          description="Visita mi canal de YouTube para tutoriales y guías gratuitas sobre Java, Spring Boot, SQL, Git y más."
+          href="https://youtube.com/@fmoutinhodev"
+          cta="Ir a YouTube"
+        />
       </div>
     </div>
   );
