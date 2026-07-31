@@ -147,11 +147,13 @@
 
   /* Center site with max-width */
   body {
-    @apply flex justify-center;
+    display: flex;
+    justify-content: center;
   }
 
-  body > div {
-    @apply w-full max-w-[1440px];
+  body > div:first-child {
+    width: 100%;
+    max-width: 1440px;
   }
 
   /* Code font */
