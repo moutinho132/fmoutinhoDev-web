@@ -2,50 +2,89 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base colors - Clean modern light theme */
+    --background: 0 0% 98%;
+    --foreground: 220 25% 10%;
+    
+    /* Cards and surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 25% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
+    --popover-foreground: 220 25% 10%;
+    
+    /* Primary - Rich teal/cyan for developer brand */
+    --primary: 187 85% 35%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary - Warm gray */
+    --secondary: 220 15% 96%;
+    --secondary-foreground: 220 25% 20%;
+    
+    /* Muted - Subtle backgrounds */
+    --muted: 220 15% 96%;
+    --muted-foreground: 220 15% 45%;
+    
+    /* Accent - Orange for Java/energy */
+    --accent: 25 95% 53%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Borders and inputs */
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 187 85% 35%;
+    
+    /* Radius */
+    --radius: 0.75rem;
+    
+    /* Custom brand colors */
+    --brand-gradient-start: 187 85% 35%;
+    --brand-gradient-end: 25 95% 53%;
+    --youtube-red: 0 100% 50%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    /* Dark theme - Professional developer aesthetic */
+    --background: 222 47% 8%;
+    --foreground: 210 20% 95%;
+    
+    /* Cards */
+    --card: 222 40% 12%;
+    --card-foreground: 210 20% 95%;
+    --popover: 222 40% 12%;
+    --popover-foreground: 210 20% 95%;
+    
+    /* Primary - Brighter teal for dark mode */
+    --primary: 175 70% 50%;
+    --primary-foreground: 222 47% 8%;
+    
+    /* Secondary */
+    --secondary: 222 30% 18%;
+    --secondary-foreground: 210 20% 90%;
+    
+    /* Muted */
+    --muted: 222 30% 18%;
+    --muted-foreground: 215 15% 60%;
+    
+    /* Accent - Bright orange */
+    --accent: 25 90% 55%;
+    --accent-foreground: 222 47% 8%;
+    
+    /* Destructive */
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 210 20% 95%;
+    
+    /* Borders */
+    --border: 222 30% 22%;
+    --input: 222 30% 22%;
+    --ring: 175 70% 50%;
   }
 }
 
@@ -53,7 +92,117 @@
   * {
     @apply border-border;
   }
+  
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Code font */
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+}
+
+@layer components {
+  /* Gradient text effect */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+    background-image: linear-gradient(135deg, hsl(var(--brand-gradient-start)), hsl(var(--brand-gradient-end)));
+  }
+  
+  /* Glass effect */
+  .glass {
+    @apply bg-white/80 dark:bg-black/50 backdrop-blur-xl;
+  }
+  
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1;
+  }
+  
+  /* Glow effect for buttons */
+  .glow {
+    @apply relative overflow-hidden;
+  }
+  
+  .glow::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: radial-gradient(circle at center, hsl(var(--primary) / 0.15), transparent 70%);
+  }
+  
+  .glow:hover::before {
+    @apply opacity-100;
+  }
+  
+  /* Animated gradient border */
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box,
+                linear-gradient(135deg, hsl(var(--brand-gradient-start)), hsl(var(--brand-gradient-end))) border-box;
+    border: 2px solid transparent;
+  }
+  
+  /* YouTube red accent */
+  .youtube-accent {
+    @apply text-[#FF0000];
+  }
+  
+  /* Code block styling */
+  .code-block {
+    @apply bg-slate-900 rounded-lg p-4 overflow-x-auto;
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Text shadow */
+  .text-shadow {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
   }
 }
