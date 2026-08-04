@@ -58,16 +58,18 @@ export default function HeroSection() {
 
   return (
     <section className="relative py-16 md:py-24 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-background to-background" />
+      {/* Background gradient - Purple theme */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-500/15 via-background to-background" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl" />
       
       <div className="container relative">
         <div className="grid gap-12 lg:grid-cols-2 items-center">
           {/* Left Column - Bio */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium animate-fade-in">
-                <Sparkles className="h-4 w-4 mr-2 text-primary" />
+              <div className="inline-flex items-center rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-1.5 text-sm font-medium animate-fade-in">
+                <Sparkles className="h-4 w-4 mr-2 text-purple-500" />
                 +8 años de experiencia
               </div>
               
@@ -84,13 +86,13 @@ export default function HeroSection() {
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <Button onClick={handleDownloadCV} size="lg" className="gap-2 glow bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/25">
+              <Button onClick={handleDownloadCV} size="lg" className="gap-2 glow bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-700 hover:to-violet-700 shadow-lg shadow-purple-500/25">
                 <Download className="h-5 w-5" />
                 Descargar CV
               </Button>
-              <Button variant="outline" size="lg" asChild className="gap-2 border-2 hover:bg-primary/5">
+              <Button variant="outline" size="lg" asChild className="gap-2 border-2 border-purple-500/30 hover:bg-purple-500/5 hover:border-purple-500/50">
                 <Link href="/practicas">
-                  <Sparkles className="h-5 w-5" />
+                  <Sparkles className="h-5 w-5 text-purple-500" />
                   Prácticas con IA
                   <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -120,7 +122,7 @@ export default function HeroSection() {
             {experiences.map((exp, idx) => (
               <Card 
                 key={exp.company} 
-                className="group card-hover overflow-hidden border-2 hover:border-primary/30 stagger-item"
+                className="group card-hover overflow-hidden border-2 hover:border-purple-500/30 stagger-item"
                 style={{ animationDelay: `${idx * 50}ms` }}
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${exp.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-200`} />
@@ -129,7 +131,7 @@ export default function HeroSection() {
                     <exp.icon className="h-5 w-5 text-white" />
                   </div>
                   <h3 className="font-bold text-lg">{exp.company}</h3>
-                  <p className="text-sm font-medium text-primary">{exp.role}</p>
+                  <p className="text-sm font-medium text-purple-600 dark:text-purple-400">{exp.role}</p>
                   <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{exp.description}</p>
                 </CardContent>
               </Card>

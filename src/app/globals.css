@@ -4,12 +4,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @layer base {
   :root {
-    /* Base colors - Clean modern light theme */
-    --background: oklch(1 0 0);
+    /* Base colors - Purple & White modern theme */
+    --background: oklch(0.99 0.005 290);
     --foreground: oklch(0.145 0 0);
 
     /* Cards and surfaces */
@@ -18,53 +17,53 @@
     --popover: oklch(1 0 0);
     --popover-foreground: oklch(0.145 0 0);
 
-    /* Primary - Rich teal/cyan for developer brand */
-    --primary: oklch(0.205 0 0);
+    /* Primary - Rich purple for developer brand */
+    --primary: oklch(0.55 0.25 290);
     --primary-foreground: oklch(0.985 0 0);
 
-    /* Secondary - Warm gray */
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
+    /* Secondary - Light purple tint */
+    --secondary: oklch(0.95 0.03 290);
+    --secondary-foreground: oklch(0.25 0.15 290);
 
-    /* Muted - Subtle backgrounds */
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
+    /* Muted - Subtle purple tinted backgrounds */
+    --muted: oklch(0.96 0.02 290);
+    --muted-foreground: oklch(0.45 0.1 290);
 
-    /* Accent - Orange for Java/energy */
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
+    /* Accent - Vibrant purple */
+    --accent: oklch(0.65 0.2 290);
+    --accent-foreground: oklch(0.985 0 0);
 
     /* Destructive */
     --destructive: oklch(0.577 0.245 27.325);
     --destructive-foreground: 0 0% 100%;
 
     /* Borders and inputs */
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
+    --border: oklch(0.90 0.02 290);
+    --input: oklch(0.90 0.02 290);
+    --ring: oklch(0.55 0.25 290);
 
     /* Radius */
     --radius: 0.625rem;
 
-    /* Custom brand colors */
-    --brand-gradient-start: 187 85% 35%;
-    --brand-gradient-end: 25 95% 53%;
+    /* Custom brand colors - Purple gradient */
+    --brand-gradient-start: 270 70% 50%;
+    --brand-gradient-end: 290 65% 60%;
     --youtube-red: 0 100% 50%;
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --sidebar: oklch(0.985 0 0);
+    --chart-1: oklch(0.65 0.2 290);
+    --chart-2: oklch(0.55 0.25 290);
+    --chart-3: oklch(0.45 0.2 290);
+    --chart-4: oklch(0.35 0.15 290);
+    --chart-5: oklch(0.25 0.1 290);
+    --sidebar: oklch(0.98 0.01 290);
     --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary: oklch(0.55 0.25 290);
     --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
+    --sidebar-accent: oklch(0.95 0.02 290);
+    --sidebar-accent-foreground: oklch(0.25 0.15 290);
+    --sidebar-border: oklch(0.90 0.02 290);
+    --sidebar-ring: oklch(0.55 0.25 290);
 
-    /* Custom easing curves - Emil Kowalski Design Engineering */
+    /* Custom easing curves */
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
     --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
@@ -72,30 +71,30 @@
   }
 
   .dark {
-    /* Dark theme - Professional developer aesthetic */
-    --background: oklch(0.145 0 0);
+    /* Dark theme - Deep purple aesthetic */
+    --background: oklch(0.145 0.02 290);
     --foreground: oklch(0.985 0 0);
 
     /* Cards */
-    --card: oklch(0.205 0 0);
+    --card: oklch(0.18 0.03 290);
     --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.205 0 0);
+    --popover: oklch(0.18 0.03 290);
     --popover-foreground: oklch(0.985 0 0);
 
-    /* Primary - Brighter teal for dark mode */
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
+    /* Primary - Light purple for dark mode */
+    --primary: oklch(0.75 0.18 290);
+    --primary-foreground: oklch(0.15 0.02 290);
 
     /* Secondary */
-    --secondary: oklch(0.269 0 0);
+    --secondary: oklch(0.25 0.04 290);
     --secondary-foreground: oklch(0.985 0 0);
 
     /* Muted */
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
+    --muted: oklch(0.25 0.03 290);
+    --muted-foreground: oklch(0.70 0.05 290);
 
-    /* Accent - Bright orange */
-    --accent: oklch(0.269 0 0);
+    /* Accent - Bright purple */
+    --accent: oklch(0.65 0.2 290);
     --accent-foreground: oklch(0.985 0 0);
 
     /* Destructive */
@@ -105,20 +104,20 @@
     /* Borders */
     --border: oklch(1 0 0 / 10%);
     --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --sidebar: oklch(0.205 0 0);
+    --ring: oklch(0.70 0.15 290);
+    --chart-1: oklch(0.75 0.18 290);
+    --chart-2: oklch(0.65 0.2 290);
+    --chart-3: oklch(0.55 0.2 290);
+    --chart-4: oklch(0.45 0.15 290);
+    --chart-5: oklch(0.35 0.1 290);
+    --sidebar: oklch(0.18 0.03 290);
     --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary: oklch(0.75 0.18 290);
     --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent: oklch(0.25 0.04 290);
     --sidebar-accent-foreground: oklch(0.985 0 0);
     --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
+    --sidebar-ring: oklch(0.70 0.15 290);
   }
   .theme {
     --font-heading: var(--font-sans);
