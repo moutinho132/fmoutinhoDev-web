@@ -106,7 +106,7 @@ export default function HeroSection() {
                 {techStack.map((tech) => (
                   <span
                     key={tech.name}
-                    className={`inline-flex items-center rounded-lg border px-3 py-1.5 text-sm font-medium transition-transform hover:scale-105 ${tech.color}`}
+                    className={`inline-flex items-center rounded-lg border px-3 py-1.5 text-sm font-medium transition-[transform,box-shadow] duration-150 active:scale-95 ${tech.color}`}
                   >
                     {tech.name}
                   </span>
@@ -120,10 +120,10 @@ export default function HeroSection() {
             {experiences.map((exp, idx) => (
               <Card 
                 key={exp.company} 
-                className="group card-hover overflow-hidden border-2 hover:border-primary/30"
-                style={{ animationDelay: `${idx * 100}ms` }}
+                className="group card-hover overflow-hidden border-2 hover:border-primary/30 stagger-item"
+                style={{ animationDelay: `${idx * 50}ms` }}
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${exp.gradient} opacity-0 group-hover:opacity-5 transition-opacity`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${exp.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-200`} />
                 <CardContent className="relative pt-6">
                   <div className={`p-2.5 rounded-xl bg-gradient-to-br ${exp.gradient} w-fit mb-4`}>
                     <exp.icon className="h-5 w-5 text-white" />
