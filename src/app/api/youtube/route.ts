@@ -72,7 +72,9 @@ interface ChannelResponse {
 
 // YouTube API key should be set in environment variables
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
-const CHANNEL_ID = process.env.YOUTUBE_CHANNEL_ID || "UCfmoutinhodev";
+// Tu canal de YouTube: @fmoutinhodev
+// El CHANNEL_ID se puede obtener desde YouTube Studio > Configuración > Información del canal
+const CHANNEL_ID = process.env.YOUTUBE_CHANNEL_ID || "";
 
 export async function GET() {
   // If no API key, return mock data for development
@@ -214,92 +216,9 @@ function formatViews(views: number): string {
 }
 
 function getMockVideos(): YouTubeVideo[] {
-  return [
-    {
-      id: "dQw4w9WgXcQ",
-      title: "Java Spring Boot - Crear API REST desde Cero",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-      views: "125K",
-      duration: "45:30",
-      publishedAt: "2024-01-15",
-      isShort: false,
-    },
-    {
-      id: "dQw4w9WgXcQ",
-      title: "SQL para Principiantes - Tutorial Completo",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-      views: "89K",
-      duration: "1:02:15",
-      publishedAt: "2024-02-20",
-      isShort: false,
-    },
-    {
-      id: "dQw4w9WgXcQ",
-      title: "Git y GitHub - Guía Definitiva para Developers",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-      views: "67K",
-      duration: "38:45",
-      publishedAt: "2024-03-10",
-      isShort: false,
-    },
-    {
-      id: "dQw4w9WgXcQ",
-      title: "Microservicios con Spring Cloud",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-      views: "54K",
-      duration: "52:10",
-      publishedAt: "2024-04-05",
-      isShort: false,
-    },
-    {
-      id: "dQw4w9WgXcQ",
-      title: "Docker para Desarrolladores Java",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-      views: "43K",
-      duration: "41:20",
-      publishedAt: "2024-05-12",
-      isShort: false,
-    },
-  ];
+  return [];
 }
 
 function getMockShorts(): YouTubeVideo[] {
-  return [
-    {
-      id: "short1",
-      title: "Tip Java: Optional done right",
-      thumbnail: "",
-      views: "15K",
-      duration: "0:45",
-      publishedAt: "2024-07-01",
-      isShort: true,
-    },
-    {
-      id: "short2",
-      title: "SQL Trick: COALESCE vs IFNULL",
-      thumbnail: "",
-      views: "22K",
-      duration: "0:38",
-      publishedAt: "2024-07-05",
-      isShort: true,
-    },
-    {
-      id: "short3",
-      title: "Git: Cherry-pick explicado en 60s",
-      thumbnail: "",
-      views: "18K",
-      duration: "0:58",
-      publishedAt: "2024-07-10",
-      isShort: true,
-    },
-    {
-      id: "short4",
-      title: "Docker: CMD vs ENTRYPOINT",
-      thumbnail: "",
-      views: "25K",
-      duration: "0:52",
-      publishedAt: "2024-07-15",
-      isShort: true,
-    },
-  ];
+  return [];
 }

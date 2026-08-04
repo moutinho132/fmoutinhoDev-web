@@ -131,6 +131,30 @@ export default function YoutubeCarousel() {
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
             <span className="ml-2">Cargando videos...</span>
           </div>
+        ) : data && currentVideos.length === 0 ? (
+          <div className="text-center py-12 space-y-4">
+            <div className="w-16 h-16 mx-auto bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
+              <Play className="h-8 w-8 text-purple-600" />
+            </div>
+            <div>
+              <h3 className="text-lg font-medium mb-2">Videos de @fmoutinhodev</h3>
+              <p className="text-muted-foreground max-w-md mx-auto">
+                Configura tu API key de YouTube en las variables de entorno para mostrar tus videos aquí.
+              </p>
+            </div>
+            <Button asChild className="bg-red-600 hover:bg-red-700 gap-2">
+              <a
+                href="https://youtube.com/@fmoutinhodev"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                Visitar Canal
+              </a>
+            </Button>
+          </div>
         ) : currentVideos.length > 0 ? (
           <>
             <Carousel
@@ -248,92 +272,9 @@ export default function YoutubeCarousel() {
 }
 
 function getFallbackVideos(): YouTubeVideo[] {
-  return [
-    {
-      id: "dQw4w9WgXcQ",
-      title: "Java Spring Boot - Crear API REST desde Cero",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-      views: "125K",
-      duration: "45:30",
-      publishedAt: "2024-01-15",
-      isShort: false,
-    },
-    {
-      id: "dQw4w9WgXcQ",
-      title: "SQL para Principiantes - Tutorial Completo",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-      views: "89K",
-      duration: "1:02:15",
-      publishedAt: "2024-02-20",
-      isShort: false,
-    },
-    {
-      id: "dQw4w9WgXcQ",
-      title: "Git y GitHub - Guía Definitiva para Developers",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-      views: "67K",
-      duration: "38:45",
-      publishedAt: "2024-03-10",
-      isShort: false,
-    },
-    {
-      id: "dQw4w9WgXcQ",
-      title: "Microservicios con Spring Cloud",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-      views: "54K",
-      duration: "52:10",
-      publishedAt: "2024-04-05",
-      isShort: false,
-    },
-    {
-      id: "dQw4w9WgXcQ",
-      title: "Docker para Desarrolladores Java",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-      views: "43K",
-      duration: "41:20",
-      publishedAt: "2024-05-12",
-      isShort: false,
-    },
-  ];
+  return [];
 }
 
 function getFallbackShorts(): YouTubeVideo[] {
-  return [
-    {
-      id: "short1",
-      title: "Tip Java: Optional done right",
-      thumbnail: "",
-      views: "15K",
-      duration: "0:45",
-      publishedAt: "2024-07-01",
-      isShort: true,
-    },
-    {
-      id: "short2",
-      title: "SQL Trick: COALESCE vs IFNULL",
-      thumbnail: "",
-      views: "22K",
-      duration: "0:38",
-      publishedAt: "2024-07-05",
-      isShort: true,
-    },
-    {
-      id: "short3",
-      title: "Git: Cherry-pick explicado en 60s",
-      thumbnail: "",
-      views: "18K",
-      duration: "0:58",
-      publishedAt: "2024-07-10",
-      isShort: true,
-    },
-    {
-      id: "short4",
-      title: "Docker: CMD vs ENTRYPOINT",
-      thumbnail: "",
-      views: "25K",
-      duration: "0:52",
-      publishedAt: "2024-07-15",
-      isShort: true,
-    },
-  ];
+  return [];
 }
