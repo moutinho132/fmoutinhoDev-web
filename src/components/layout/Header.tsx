@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { trackDownloadCV } from "@/lib/metaPixel";
-import { Menu, X, Download, Youtube, Code2, GraduationCap, User, Home, Sparkles } from "lucide-react";
+import { Menu, X, Download, Youtube, Code2, GraduationCap, User, Home, Sparkles, Mail } from "lucide-react";
 import { useState } from "react";
 
 export default function Header() {
@@ -54,6 +54,10 @@ export default function Header() {
             <Youtube className="h-4 w-4" />
             <span>YouTube</span>
           </Link>
+          <Link href="/contacto" className="flex items-center space-x-1.5 px-3 py-2 text-sm font-medium rounded-lg transition-all hover:bg-primary/10 hover:text-primary">
+            <Mail className="h-4 w-4" />
+            <span>Contacto</span>
+          </Link>
           <Button onClick={handleDownloadCV} className="ml-4 gap-2 glow bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary shadow-lg shadow-primary/25">
             <Download className="h-4 w-4" />
             Descargar CV
@@ -97,6 +101,10 @@ export default function Header() {
             <Link href="/#youtube" className="flex items-center space-x-2 px-3 py-2.5 text-sm font-medium rounded-lg hover:bg-secondary transition-colors" onClick={() => setIsMenuOpen(false)}>
               <Youtube className="h-4 w-4 youtube-accent" />
               <span>YouTube</span>
+            </Link>
+            <Link href="/contacto" className="flex items-center space-x-2 px-3 py-2.5 text-sm font-medium rounded-lg hover:bg-secondary transition-colors" onClick={() => setIsMenuOpen(false)}>
+              <Mail className="h-4 w-4 text-primary" />
+              <span>Contacto</span>
             </Link>
             <div className="pt-2">
               <Button onClick={handleDownloadCV} className="gap-2 w-full bg-gradient-to-r from-primary to-primary/80">
