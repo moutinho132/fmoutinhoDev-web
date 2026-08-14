@@ -54,10 +54,19 @@ export default function RootLayout({
       <head>
         {/* Google AdSense */}
         <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3568057064524681"
-          crossOrigin="anonymous"
+          id="adsense-script"
           strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3568057064524681';
+                script.crossOrigin = 'anonymous';
+                document.head.appendChild(script);
+              })();
+            `,
+          }}
         />
         {/* Meta Pixel Script */}
         {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
