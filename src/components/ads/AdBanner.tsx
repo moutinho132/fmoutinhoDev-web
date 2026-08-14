@@ -10,8 +10,8 @@ interface AdBannerProps {
   responsive?: boolean;
 }
 
-// Google AdSense Publisher ID - Obtén el tuyo en https://www.google.com/adsense/
-const ADSENSE_PUBLISHER_ID = process.env.NEXT_PUBLIC_ADSENSE_ID || "";
+// Google AdSense Publisher ID
+const ADSENSE_PUBLISHER_ID = "ca-pub-3568057064524681";
 
 export default function AdBanner({ 
   slot, 

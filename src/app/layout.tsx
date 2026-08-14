@@ -53,14 +53,12 @@ export default function RootLayout({
     <html lang="es">
       <head>
         {/* Google AdSense */}
-        {process.env.NEXT_PUBLIC_ADSENSE_ID && (
-          <Script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`}
-            crossOrigin="anonymous"
-            strategy="afterInteractive"
-          />
-        )}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3568057064524681"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         {/* Meta Pixel Script */}
         {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
           <>
