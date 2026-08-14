@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Database, Code2, GitBranch, ArrowRight, Sparkles, Container, Terminal, Zap, FileJson, FileCode, Braces, Cpu, Terminal as TerminalIcon } from "lucide-react";
 import Link from "next/link";
 import { SelfPromoCard } from "@/components/ads/AdBanner";
+import AdBanner from "@/components/ads/AdBanner";
 
 const playgrounds = [
   {
@@ -172,6 +173,13 @@ export default function HomePage() {
       {/* GitHub Projects */}
       <GitHubProjects />
 
+      {/* Ad Banner */}
+      <section className="py-6">
+        <div className="container max-w-4xl">
+          <AdBanner slot="2309382371" format="fluid" layoutKey="-eb-1p+1e-in+q0" />
+        </div>
+      </section>
+
       {/* AI Features Section */}
       <section className="py-12 md:py-16 bg-gradient-to-b from-background to-muted/20">
         <div className="container">
@@ -295,6 +303,13 @@ export default function HomePage() {
 
       {/* YouTube Carousel Section */}
       <YoutubeCarousel />
+
+      {/* Related Articles Ad */}
+      <section className="py-6">
+        <div className="container max-w-4xl">
+          <AdBanner slot="3789985003" format="autorelaxed" />
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-12 md:py-24 bg-gradient-to-b from-muted/30 to-background">

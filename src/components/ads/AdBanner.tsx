@@ -4,9 +4,11 @@ import { useEffect, useRef } from "react";
 
 interface AdBannerProps {
   slot: string;
-  format?: "horizontal" | "vertical" | "rectangle" | "auto";
+  format?: "horizontal" | "vertical" | "rectangle" | "auto" | "fluid" | "autorelaxed";
   className?: string;
   responsive?: boolean;
+  layoutKey?: string;
+  layout?: string; // Para in-article
 }
 
 // Google AdSense Publisher ID
@@ -16,7 +18,9 @@ export default function AdBanner({
   slot, 
   format = "auto", 
   className = "",
-  responsive = true 
+  responsive = true,
+  layoutKey,
+  layout
 }: AdBannerProps) {
   const adRef = useRef<HTMLModElement>(null);
   const isAdPushed = useRef(false);
@@ -31,7 +35,7 @@ export default function AdBanner({
     // Verificar si el slot parece válido (es numérico)
     const isValidSlot = /^\d+$/.test(slot);
     if (!isValidSlot) {
-      console.log(`AdSense: Slot "${slot}" no es válido. Usa un ID de bloque de anuncios numérico de tu panel de AdSense.`);
+      console.log(`AdSense: Slot "${slot}" no es válido.`);
       return;
     }
 
@@ -41,7 +45,6 @@ export default function AdBanner({
       if (adsbygoogle) {
         adsbygoogle.push({});
         isAdPushed.current = true;
-        console.log(`AdSense: Anuncio cargado para slot ${slot}`);
       }
     } catch (error) {
       console.error("AdSense error:", error);
@@ -53,6 +56,8 @@ export default function AdBanner({
     vertical: "min-h-[300px] md:min-h-[600px]",
     rectangle: "min-h-[250px] md:min-h-[280px]",
     auto: "min-h-[100px] md:min-h-[150px]",
+    fluid: "min-h-[100px]",
+    autorelaxed: "min-h-[200px]",
   };
 
   // Contenido alternativo cuando no hay slot válido
@@ -101,12 +106,33 @@ export default function AdBanner({
         style={{ 
           display: "block",
           width: responsive ? "100%" : undefined,
+          textAlign: layout === "in-article" ? "center" : undefined,
         }}
         data-ad-client={ADSENSE_PUBLISHER_ID}
         data-ad-slot={slot}
-        data-ad-format={format === "auto" ? "auto" : undefined}
+        data-ad-format={format}
+        data-ad-layout={layout || undefined}
+        data-ad-layout-key={layoutKey || undefined}
         data-full-width-responsive={responsive ? "true" : "false"}
       />
+    </div>
+  );
+}
+
+// Componente para anuncios in-article
+export function InArticleAd({ slot }: { slot: string }) {
+  return (
+    <div className="my-8">
+      <AdBanner slot={slot} format="fluid" layout="in-article" />
+    </div>
+  );
+}
+
+// Componente para artículos relacionados
+export function RelatedArticlesAd({ slot }: { slot: string }) {
+  return (
+    <div className="my-8">
+      <AdBanner slot={slot} format="autorelaxed" />
     </div>
   );
 }
