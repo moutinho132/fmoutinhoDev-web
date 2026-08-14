@@ -16,12 +16,12 @@ export default function PythonPage() {
         </p>
       </div>
 
-      <AdBanner slot="python-top" />
+      <AdBanner slot="9818155394" format="horizontal" />
 
       <PythonSandbox />
 
       <div className="mt-8">
-        <AdBanner slot="python-bottom" />
+        <AdBanner slot="9818155394" format="horizontal" />
       </div>
     </main>
   );

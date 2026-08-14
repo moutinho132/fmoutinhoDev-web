@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Script from "next/script";
+import { useEffect, useRef } from "react";
 
 interface AdBannerProps {
   slot: string;
@@ -19,29 +18,35 @@ export default function AdBanner({
   className = "",
   responsive = true 
 }: AdBannerProps) {
-  const [adLoaded, setAdLoaded] = useState(false);
-  const [showFallback, setShowFallback] = useState(false);
+  const adRef = useRef<HTMLModElement>(null);
+  const isAdPushed = useRef(false);
 
   useEffect(() => {
-    // Si no hay AdSense configurado, mostrar contenido alternativo después de un delay
-    if (!ADSENSE_PUBLISHER_ID) {
-      const timer = setTimeout(() => setShowFallback(true), 1000);
-      return () => clearTimeout(timer);
+    // Solo ejecutar en el cliente
+    if (typeof window === "undefined") return;
+    
+    // Evitar push duplicado
+    if (isAdPushed.current) return;
+
+    // Verificar si el slot parece válido (es numérico)
+    const isValidSlot = /^\d+$/.test(slot);
+    if (!isValidSlot) {
+      console.log(`AdSense: Slot "${slot}" no es válido. Usa un ID de bloque de anuncios numérico de tu panel de AdSense.`);
+      return;
     }
 
-    // Intentar cargar el anuncio
     try {
       // @ts-expectError - AdSense global
-      if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).adsbygoogle) {
-        // @ts-expectError - Push ad to AdSense queue
-        (window as unknown as Record<string, { push: (arg: unknown) => void }>).adsbygoogle.push({});
-        setAdLoaded(true);
+      const adsbygoogle = (window as unknown as Record<string, unknown[]>).adsbygoogle;
+      if (adsbygoogle) {
+        adsbygoogle.push({});
+        isAdPushed.current = true;
+        console.log(`AdSense: Anuncio cargado para slot ${slot}`);
       }
     } catch (error) {
       console.error("AdSense error:", error);
-      setShowFallback(true);
     }
-  }, []);
+  }, [slot]);
 
   const dimensions = {
     horizontal: "min-h-[90px] md:min-h-[100px]",
@@ -50,19 +55,18 @@ export default function AdBanner({
     auto: "min-h-[100px] md:min-h-[150px]",
   };
 
-  // Contenido alternativo cuando no hay anuncios
+  // Contenido alternativo cuando no hay slot válido
   const FallbackContent = () => (
     <div className="w-full h-full flex items-center justify-center p-4">
       <div className="text-center space-y-3">
-        {/* Promoción propia */}
-        <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg p-4">
-          <p className="font-semibold text-primary">¿Quieres aprender Java?</p>
+        <div className="bg-gradient-to-r from-purple-500/10 to-violet-500/10 rounded-lg p-4 border border-purple-500/20">
+          <p className="font-semibold text-purple-600 dark:text-purple-400">¿Quieres aprender Java?</p>
           <p className="text-sm text-muted-foreground mt-1">
             Curso completo de Spring Boot y microservicios
           </p>
           <a 
             href="/cursos" 
-            className="inline-block mt-2 text-sm font-medium text-primary hover:underline"
+            className="inline-block mt-2 text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
           >
             Ver cursos →
           </a>
@@ -71,8 +75,11 @@ export default function AdBanner({
     </div>
   );
 
-  // Si no hay Publisher ID configurado, mostrar placeholder con promoción propia
-  if (!ADSENSE_PUBLISHER_ID || showFallback) {
+  // Verificar si el slot es válido (numérico)
+  const isValidSlot = /^\d+$/.test(slot);
+
+  // Si no hay slot válido, mostrar contenido propio
+  if (!isValidSlot) {
     return (
       <div
         className={`
@@ -87,29 +94,20 @@ export default function AdBanner({
   }
 
   return (
-    <>
-      {/* Google AdSense Script - Solo se carga una vez */}
-      <Script
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_PUBLISHER_ID}`}
-        strategy="afterInteractive"
-        crossOrigin="anonymous"
+    <div className={`ad-container ${className} ${dimensions[format]}`}>
+      <ins
+        ref={adRef}
+        className="adsbygoogle"
+        style={{ 
+          display: "block",
+          width: responsive ? "100%" : undefined,
+        }}
+        data-ad-client={ADSENSE_PUBLISHER_ID}
+        data-ad-slot={slot}
+        data-ad-format={format === "auto" ? "auto" : undefined}
+        data-full-width-responsive={responsive ? "true" : "false"}
       />
-
-      {/* Ad Container */}
-      <div className={`ad-container ${className}`}>
-        <ins
-          className="adsbygoogle"
-          style={{ 
-            display: "block",
-            width: responsive ? "100%" : undefined,
-          }}
-          data-ad-client={ADSENSE_PUBLISHER_ID}
-          data-ad-slot={slot}
-          data-ad-format={format === "auto" ? "auto" : undefined}
-          data-full-width-responsive={responsive ? "true" : "false"}
-        />
-      </div>
-    </>
+    </div>
   );
 }
 

@@ -16,12 +16,12 @@ export default function DockerPage() {
         </p>
       </div>
 
-      <AdBanner slot="docker-top" />
+      <AdBanner slot="9818155394" format="horizontal" />
 
       <DockerSimulator />
 
       <div className="mt-8">
-        <AdBanner slot="docker-bottom" />
+        <AdBanner slot="9818155394" format="horizontal" />
       </div>
     </main>
   );

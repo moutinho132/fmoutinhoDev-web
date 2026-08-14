@@ -22,7 +22,7 @@ export default function GitPlaygroundPage() {
             <GitSimulator />
           </div>
           <div className="lg:col-span-1">
-            <AdBanner slot="git-sidebar" format="vertical" />
+            <AdBanner slot="9818155394" format="vertical" />
           </div>
         </div>
       </div>

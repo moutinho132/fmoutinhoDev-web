@@ -22,7 +22,7 @@ export default function JsPlaygroundPage() {
             <JsSandbox />
           </div>
           <div className="lg:col-span-1">
-            <AdBanner slot="js-sidebar" format="vertical" />
+            <AdBanner slot="9818155394" format="vertical" />
           </div>
         </div>
       </div>

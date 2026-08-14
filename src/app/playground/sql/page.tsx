@@ -22,7 +22,7 @@ export default function SqlPlaygroundPage() {
             <SqlEditor />
           </div>
           <div className="lg:col-span-1">
-            <AdBanner slot="sql-sidebar" format="vertical" />
+            <AdBanner slot="9818155394" format="vertical" />
           </div>
         </div>
       </div>
